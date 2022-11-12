@@ -4,7 +4,7 @@ import appointment from '../../../assets/images/appointment.png'
 import PrimaryButton from '../../../component/PrimaryButton/PrimaryButton';
 const MakeAppointment = () => {
     return (
-        <section className='mt-32'
+        <section className='lg:mt-48 sm:mt-46 md:mt-32'
         style={{
             background: `url(${appointment})`
         }}

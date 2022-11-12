@@ -3,6 +3,7 @@ import './App.css';
 import Main from '../src/Layout/Main';
 import Home from '../src/Pages/Home/Home';
 import Login from '../src/Pages/Login/Login';
+import Appointment from './Pages/Appointment/Appointment';
 
 function App() {
   const router = createBrowserRouter([
@@ -17,15 +18,18 @@ function App() {
       {
         path : '/login',
         element : <Login></Login>
+      },
+      {
+        path : '/appointment',
+        element : <Appointment></Appointment>
       }
     ]
    }
   ])
   return (
-    <div className="max-w-[1440px] mx-auto">
+    <div className="max-w-[90%] mx-auto">
     <RouterProvider router={router}></RouterProvider>  
     </div>
   );
 }
-
 export default App;
