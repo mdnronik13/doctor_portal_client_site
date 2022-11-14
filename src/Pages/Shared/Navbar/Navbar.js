@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Button } from 'react-day-picker';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err));
+    }
     const menuItems =
         <>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/appointment'>Appointment</Link></li>
             <li><Link to='/about'>About</Link></li>
-            <li><Link to='/login'>Login</Link></li>
-            <li><Link to='/reviews'>Reviews</Link></li>
+            {user?.uid ?
+                <>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li><Button onClick={handleLogOut}>Log Out</Button></li>
+                </>
+                :
+                <li><Link to='/login'>Login</Link></li>}
         </>
     return (
         <div className="navbar flex justify-between bg-base-100">
