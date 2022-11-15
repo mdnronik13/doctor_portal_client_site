@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -5,8 +6,9 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
     // login section //
-    const {signIn} = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const provider = new GoogleAuthProvider();
     //error message//
     const [loginError, setLoginError] = useState('');
     const location = useLocation();
@@ -19,17 +21,27 @@ const Login = () => {
         //error message//
         setLoginError('');
         signIn(data.email, data.password)
-        .then(result =>{
-            const user = result.user;
-            console.log(user);
-            navigate(from, {replace: true});
-        })
-        .catch(err => {
-         console.log(err.message)
-         //error message//
-         setLoginError(err.message)
-    });
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch(err => {
+                console.log(err.message)
+                //error message//
+                setLoginError(err.message)
+            });
     }
+    const handleGoogleSignIn = () => {
+        googleSignIn(provider)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
     return (
         <div className='h-[600px] flex justify-center items-center'>
             <div className='w-96 p-7'>
@@ -59,15 +71,15 @@ const Login = () => {
                     <input className='btn btn-accent w-full ' value="Login" type="submit" />
                     {/* //error message// */}
                     {
-                        loginError && 
+                        loginError &&
                         <p className='text-red-700'>
-                        {loginError}
+                            {loginError}
                         </p>
                     }
                 </form>
                 <p>New to Doctors Portal ? <Link to="/signup" className='text-secondary'>Create an Account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

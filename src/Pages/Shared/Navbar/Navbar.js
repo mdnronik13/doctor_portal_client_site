@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-day-picker';
+// import { Button } from 'react-day-picker';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
@@ -18,7 +18,7 @@ const Navbar = () => {
             {user?.uid ?
                 <>
                     <li><Link to='/dashboard'>Dashboard</Link></li>
-                    <li><Button onClick={handleLogOut}>Log Out</Button></li>
+                    <li><button className='btn btn-ghost' onClick={handleLogOut}>Log Out</button></li>
                 </>
                 :
                 <li><Link to='/login'>Login</Link></li>}
