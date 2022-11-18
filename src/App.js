@@ -8,6 +8,10 @@ import SignUp from './Pages/SignUp/SignUp';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import { Toaster } from 'react-hot-toast';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import DasboardLayout from './DashboardLayout/DasboardLayout';
+import MyAppointment from './Pages/Dashboard/MyAppointment/MyAppointment';
+import Allusers from './Pages/Dashboard/Dashboard/Allusers';
+import AdminRoute from './Pages/PrivateRoute/AdminRoute';
 
 function App() {
   const router = createBrowserRouter([
@@ -35,7 +39,17 @@ function App() {
    },
    {
     path: '/dashboard',
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+    element: <PrivateRoute><DasboardLayout></DasboardLayout></PrivateRoute>,
+    children : [
+      {
+        path : '/dashboard',
+        element: <MyAppointment></MyAppointment>
+      },
+      {
+        path : '/dashboard/allusers',
+        element: <AdminRoute><Allusers></Allusers></AdminRoute>
+      }
+    ]
   }
   ])
   return (

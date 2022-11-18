@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
     const upateUser = (userInfo) => {
-        return updateProfile(user, userInfo);
+        return updateProfile(auth.currentUser, userInfo);
     }
     // Google LogIn // 
     const googleSignIn = (provider) => {
