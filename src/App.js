@@ -14,12 +14,15 @@ import Allusers from './Pages/Dashboard/Dashboard/Allusers';
 import AdminRoute from './Pages/PrivateRoute/AdminRoute';
 import AddDoctor from './Pages/Dashboard/AddDoctor';
 import ManageDoctors from './Pages/Dashboard/MyAppointment/MangeDoctors/ManageDoctors';
+import Payment from './Pages/Dashboard/Payment/Payment';
+import DisplayError from './Pages/Shared/DisplayError/DisplayError';
 
 function App() {
   const router = createBrowserRouter([
    {
     path : '/',
     element : <Main></Main>,
+    errorElement: <DisplayError></DisplayError>,
     children : [
       {
         path : '/',
@@ -42,6 +45,7 @@ function App() {
    {
     path: '/dashboard',
     element: <PrivateRoute><DasboardLayout></DasboardLayout></PrivateRoute>,
+    errorElement : <DisplayError></DisplayError>,
     children : [
       {
         path : '/dashboard',
@@ -58,6 +62,11 @@ function App() {
       {
         path : '/dashboard/managedoctor',
         element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
+      },
+      {
+        path : '/dashboard/payment/:id',
+        element: <Payment></Payment>,
+        loader: ({params}) => fetch(`https://doctors-portal-server-abrarasif11.vercel.app/bookings/${params.id}`)
       }
     ]
   }

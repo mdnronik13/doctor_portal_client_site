@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const MyAppointment = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `https://doctors-portal-server-abrarasif11.vercel.app/bookings?email=${user?.email}`
 
     const { data: bookings = [] } = useQuery({
         queryKey: ['bookings', user?.email],
@@ -20,7 +21,7 @@ const MyAppointment = () => {
     })
     return (
         <div>
-            <h3 className='text-3xl'>My Appointment</h3>
+            <h3 className='text-3xl mb-5'>My Appointment</h3>
             <div className="overflow-x-auto">
                 <table className="table w-full mt-8">
                     <thead>
@@ -30,10 +31,10 @@ const MyAppointment = () => {
                             <th>Treatment</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
                             {bookings &&
                                 bookings?.map((booking, i) =>
                                     <tr key={booking._id}>
@@ -42,10 +43,20 @@ const MyAppointment = () => {
                                         <td>{booking.treatment}</td>
                                         <td>{booking.appointmentDate}</td>
                                         <td>{booking.slot}</td>
+                                        <td>
+                                            {
+                                                booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}
+                                                >
+                                                <button className='btn btn-primary btn-xs text-white'>Pay</button>
+                                                </Link>
+                                            }
+                                            {
+                                                booking.price && booking.paid && <span className='text-green-600'>Paid</span>
+                                            }
+                                        </td>
                                     </tr>
                                 )
                             }
-                        </tr>
                     </tbody>
                 </table>
             </div>
