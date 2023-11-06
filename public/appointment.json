@@ -1,7 +1,7 @@
 [
     {
       
-      "name": "Teeth Orthodontics",
+      "appointmentName": "Teeth Orthodontics",
       "slots": [
         "08.00 AM - 08.30 AM",
         "08.30 AM - 09.00 AM",
@@ -23,7 +23,7 @@
     },
     {
       
-      "name": "Cosmetic Dentistry",
+      "appointmentName": "Cosmetic Dentistry",
       "slots": [
         "08.00 AM - 08.30 AM",
         "08.30 AM - 09.00 AM",
@@ -45,7 +45,7 @@
     },
     {
       
-      "name": "Teeth Cleaning",
+      "appointmentName": "Teeth Cleaning",
       "slots": [
         "08.00 AM - 08.30 AM",
         "08.30 AM - 09.00 AM",
@@ -67,7 +67,7 @@
     },
     {
       
-      "name": "Cavity Protection",
+      "appointmentName": "Cavity Protection",
       "slots": [
         "08.00 AM - 08.30 AM",
         "08.30 AM - 09.00 AM",
@@ -89,7 +89,7 @@
     },
     {
       
-      "name": "Pediatric Dental",
+      "appointmentName": "Pediatric Dental",
       "slots": [
         "08.00 AM - 08.30 AM",
         "08.30 AM - 09.00 AM",
@@ -111,7 +111,7 @@
     },
     {
       
-      "name": "Oral Surgery",
+      "appointmentName": "Oral Surgery",
       "slots": [
         "08.00 AM - 08.30 AM",
         "08.30 AM - 09.00 AM",

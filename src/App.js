@@ -66,7 +66,7 @@ function App() {
       {
         path : '/dashboard/payment/:id',
         element: <Payment></Payment>,
-        loader: ({params}) => fetch(`https://doctors-portal-server-abrarasif11.vercel.app/bookings/${params.id}`)
+        loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
       }
     ]
   }

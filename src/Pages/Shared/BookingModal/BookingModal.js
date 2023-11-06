@@ -25,7 +25,7 @@ const BookingModal = ({ treatment, setTreatment, selectedDate , refetch }) => {
             price
         }
         //    booking /
-        fetch('https://doctors-portal-server-abrarasif11.vercel.app/bookings', {
+        fetch('http://localhost:5000/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -54,7 +54,7 @@ const BookingModal = ({ treatment, setTreatment, selectedDate , refetch }) => {
                     <h3 className="text-lg font-bold">{treatmentName}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-6 mt-6'>
                         <input type="text" disabled value={date} className="input w-full input-bordered" />
-                        <select name='slot' className="select select-bordered w-full">
+                        {/* <select name='slot' className="select select-bordered w-full">
                             {
                                 slots.map((slot, i) =>
                                     <option
@@ -62,7 +62,7 @@ const BookingModal = ({ treatment, setTreatment, selectedDate , refetch }) => {
                                         key={i}
                                     >{slot}</option>)
                             }
-                        </select>
+                        </select> */}
                         <input name='name' type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input w-full input-bordered" />
                         <input name='email' type="email" defaultValue={user?.email} disabled placeholder="Your Email" className="input w-full input-bordered" />
                         <input name='phone' type="text" placeholder="Your Phone Number" className="input w-full input-bordered" />

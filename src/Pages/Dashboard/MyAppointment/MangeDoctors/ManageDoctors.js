@@ -14,10 +14,8 @@ const ManageDoctors = () => {
         queryKey: ['doctors'],
         queryFn: async () => {
             try {
-                const res = await fetch('https://doctors-portal-server-abrarasif11.vercel.app/doctors', {
-                    headers: {
-                        authorization: `bearer ${localStorage.getItem('accessToken')}`
-                    }
+                const res = await fetch('http://localhost:5000/doctors', {
+                  
                 });
                 const data = await res.json()
                 return data;
@@ -28,11 +26,9 @@ const ManageDoctors = () => {
         }
     })
     const handleDeleteDoctor = doctor => {
-        fetch(`https://doctors-portal-server-abrarasif11.vercel.app/doctors/${doctor._id}`, {
+        fetch(`http://localhost:5000/doctors/${doctor._id}`, {
             method: 'DELETE',
-            headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            }
+         
         })
         .then(res => res.json())
         .then(data => {
@@ -54,7 +50,7 @@ const ManageDoctors = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Avatar</th>
+           
                             <th>Name</th>
                             <th>Email</th>
                             <th>Specialty</th>
@@ -66,13 +62,7 @@ const ManageDoctors = () => {
                             doctors.map((doctor, i) =>
                                 <tr key={doctor._id}>
                                     <th>{i + 1}</th>
-                                    <td>
-                                        <div className="avatar">
-                                            <div className="w-24 rounded-full">
-                                                <img src={doctor.image} alt='' />
-                                            </div>
-                                        </div>
-                                    </td>
+                                   
                                     <td>{doctor.name}</td>
                                     <td>{doctor.email}</td>
                                     <td>{doctor.specialty}</td>

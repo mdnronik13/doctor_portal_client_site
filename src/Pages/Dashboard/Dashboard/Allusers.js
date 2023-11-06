@@ -8,18 +8,16 @@ const Allusers = () => {
     const { data: users = [] , refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('https://doctors-portal-server-abrarasif11.vercel.app/users');
+            const res = await fetch('http://localhost:5000/users');
             const data = await res.json();
             return data;
         }
     })
 
     const handleAdmin = id => {
-        fetch(`https://doctors-portal-server-abrarasif11.vercel.app/users/admin/${id}`, {
+        fetch(`http://localhost:5000/users/admin/${id}`, {
             method: 'PUT',
-            headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            }
+          
         })
         .then(res => res.json())
         .then(data => {

@@ -13,11 +13,11 @@ const CheckoutForm = ({ booking }) => {
     const { price, patient, email, _id } = booking;
 
     useEffect(() => {
-        fetch('https://doctors-portal-server-abrarasif11.vercel.app/create-payment-intent', {
+        fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+  
             },
             body: JSON.stringify({ price })
         })
@@ -73,11 +73,11 @@ const CheckoutForm = ({ booking }) => {
                 price,
                 transactionId: paymentIntent.id,
             }
-            fetch('https://doctors-portal-server-abrarasif11.vercel.app/payments', {
+            fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+   
                 },
                 body: JSON.stringify(payment)
             })

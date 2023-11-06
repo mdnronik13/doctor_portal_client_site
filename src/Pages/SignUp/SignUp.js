@@ -3,28 +3,22 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
-import useToken from '../../hooks/useToken';
+
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     // sign in section //
     const { createUser, upateUser} = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-    const [createdUserEmail , setCreatedUserEmail] = useState('')
-    const [token] = useToken(createdUserEmail);
- 
-    useEffect(() =>{
-        if(token){
-            navigate('/')
-        }
-    }, [token])  
-     const navigate = useNavigate()
+
+
     const handleSignUp = (data) => {
         console.log(data);
+        saveUser(data.name , data.email, data.phone);
         setSignUpError('');
-        // sign in section //
+        // sign in section for firebase  
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -44,20 +38,26 @@ const SignUp = () => {
                 setSignUpError(error.message)
             })
     }  
-    // ......//
-       const saveUser = (name, email) =>{
-        const user = {name, email};
-        fetch('https://doctors-portal-server-abrarasif11.vercel.app/users', {
+    // ...sign up section for mongodb...//
+       const saveUser = (name, email,number) =>{
+        const user = {name, email,number};
+        console.log(user);
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => {
-            setCreatedUserEmail(email)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.acknowledged) {
+            toast.success("User Added Successfully");
+            console.log(data);
+          }
         })
+        .catch((err) => console.log(err));
        }
        
     return (
@@ -69,6 +69,11 @@ const SignUp = () => {
                         <label className="label"> <span className="label-text">Name</span></label>
                         <input type="text" {...register('name', {
                             required: "Name is required",
+                        })}
+                            className="input input-bordered w-full max-w-xs" />
+                       <label className="label"> <span className="label-text">Phone</span></label>
+                        <input type="number" {...register('phone', {
+                            required: "Phone is required",
                         })}
                             className="input input-bordered w-full max-w-xs" />
                         {errors.name && <p className="text-red-700">{errors.name?.message}</p>}
@@ -87,7 +92,7 @@ const SignUp = () => {
                             {...register('password', {
                                 required: "Password is required",
                                 minLength: { value: 6, message: "Password Must be 6 characters or long" },
-                                pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: 'Password Must be strong' }
+                                pattern: { value: /(?=.*[A-Z])/, message: 'Password Must be strong' }
 
                             })}
                             className="input input-bordered w-full max-w-xs" />
