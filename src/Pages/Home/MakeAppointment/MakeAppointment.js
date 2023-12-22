@@ -1,27 +1,23 @@
-import React from 'react';
-import doctor from '../../../assets/images/doctor.png'
-import appointment from '../../../assets/images/appointment.png'
-import PrimaryButton from '../../../component/PrimaryButton/PrimaryButton';
+import React from "react";
+import doctor from "../../../assets/images/doctor4.jpg";
 const MakeAppointment = () => {
-    return (
-        <section className='lg:mt-48 sm:mt-46 md:mt-32'
-        style={{
-            background: `url(${appointment})`
-        }}
-        >
-            <div className="hero">
-  <div className="hero-content text-white flex-col lg:flex-row">
-    <img src={doctor} className="lg:w-1/2 hidden md:block -mt-36 -mb-4 rounded-lg shadow-2xl"  alt=''/>
-    <div>
-        <h1 className='text-2xl font-bold text-primary'>Appointment</h1>
-      <h1 className="text-4xl font-bold">Make an appointment Today</h1>
-      <p className="py-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsumis that it has a more-or-less normal distribution of letters,as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page.</p>
-     <PrimaryButton>Appoint Now</PrimaryButton>
+  return (
+    <div className="hero">
+      <div className="hero-content  flex-col ">
+        <img style={{ height: 200, width: 200 }}
+          src={doctor}
+          className="lg:w-1/2 hidden md:block -mt-36 -mb-4 rounded-lg shadow-2xl"
+          alt=""
+        />
+        <div>
+          <h1 className="text-4xl font-bold">Make an appointment Today</h1>
+          <p className="py-1">
+            An appointment is a promise of time, a commitment to care.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-        </section>
-    );
+  );
 };
 
 export default MakeAppointment;

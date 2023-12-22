@@ -1,0 +1,36 @@
+.inputcolor{
+  color:#036687;
+}
+
+.btnback3{
+  color:#036687;
+  background:White;
+  border-color:#036687;
+}
+.field2{
+  color:#036687;
+  background:White;
+  text-align: center;
+}
+.field{
+  color:White;
+  background:#036687;
+  text-align: center;
+}
+.btnback2{
+  color:White;
+  background:#036687;
+}
+.btnback2:hover{
+  color:#036687;
+  background:White;
+  border-color:#036687;
+}
+.btnback3:hover{
+  color:White;
+  background:#036687;
+  border-color:#036687;
+}
+.inputhover:hover{
+  border-color:#036687;
+}

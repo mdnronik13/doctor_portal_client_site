@@ -1,0 +1,20 @@
+.col2{
+  color: #2c90b0;
+  background-color:white;
+}
+.background{
+  background-color: white;
+}
+.col2:hover {
+  color:white;
+  background-color: #2c90b0;
+  border-radius: 25px;
+}
+.big{
+  
+}
+.hole{
+  background:while;
+  border-radius: 0px 0px 10px 10px;
+}
+

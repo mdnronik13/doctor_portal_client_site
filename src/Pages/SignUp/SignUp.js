@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
-
+import '../../Pages/Login/style.css';
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
@@ -61,50 +61,52 @@ const SignUp = () => {
        }
        
     return (
-        <div className='h-[600px] flex justify-center items-center'>
-            <div className='w-96 p-7'>
-                <h2 className='text-xl text-center'>Sign Up</h2>
+        <div className='h-[600px] flex justify-center items-center '>
+            <div className='w-96 p-7 new'>
+            <h2 className='font-bold  text-center inputcolor ' style={{fontSize: 40 }}>SIGN UP</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Name</span></label>
-                        <input type="text" {...register('name', {
+                        <label className="label"> <span className="label-text inputcolor" >Name</span></label>
+                        <input type="text" placeholder="Your Name" {...register('name', {
                             required: "Name is required",
                         })}
-                            className="input input-bordered w-full max-w-xs" />
-                       <label className="label"> <span className="label-text">Phone</span></label>
-                        <input type="number" {...register('phone', {
+                            className="input input-bordered w-full max-w-xs inputhover" />
+                       <label className="label"> <span className="label-text inputcolor" >Phone</span></label>
+                        <input type="number" placeholder="Your Phone Number" {...register('phone', {
                             required: "Phone is required",
                         })}
-                            className="input input-bordered w-full max-w-xs" />
+                            className="input input-bordered w-full max-w-xs inputhover" />
                         {errors.name && <p className="text-red-700">{errors.name?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Email</span></label>
-                        <input type="text" {...register('email', {
+                        <label className="label"> <span className="label-text inputcolor" >Gmail</span></label>
+                        <input type="text" placeholder="Your Gmail" {...register('email', {
                             required: "Email Address is required",
                         })}
-                            className="input input-bordered w-full max-w-xs" />
+                            className="input input-bordered w-full max-w-xs inputhover" />
                         {errors.email && <p className="text-red-700">{errors.email?.message}</p>}
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Password</span></label>
-                        <input type="password"
+                        <label className="label"> <span className="label-text inputcolor" placeholder="Your Password">Password</span></label>
+                        <input type="password" placeholder="Your Password"
                             {...register('password', {
                                 required: "Password is required",
                                 minLength: { value: 6, message: "Password Must be 6 characters or long" },
                                 pattern: { value: /(?=.*[A-Z])/, message: 'Password Must be strong' }
 
                             })}
-                            className="input input-bordered w-full max-w-xs" />
+                            className="input input-bordered w-full max-w-xs inputhover" />
                         {errors.password && <p className="text-red-700">{errors.password?.message}
                         </p>}
                     </div>
-                    <input className='btn btn-accent w-full mt-4 ' value="Sign Up" type="submit" />
+                    <br></br>
+                    <input className='btn btn-accent w-full btnback2' value="Sign Up" type="submit" />
                     {
                         signUpError && <p className='text-red-700'>{signUpError}</p>
                     }
                 </form>
-                <p>Already have an account ? <Link to="/login" className='text-secondary'>Log in here</Link></p>
+                <br></br>
+                <p> <Link to="/login" className='btn btn-accent w-full btnback3 '>Log in here</Link></p>
                
             </div>
         </div>

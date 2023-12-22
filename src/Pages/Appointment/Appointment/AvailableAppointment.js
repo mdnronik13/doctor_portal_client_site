@@ -8,6 +8,7 @@ import Loading from "../../Shared/Loading/Loading";
 const AvailableAppointment = ({ selectedDate }) => {
   const [treatment, setTreatment] = useState(null);
   const date = format(selectedDate, "PP");
+  
   const {
     data: appointments = [],
     refetch,
@@ -26,7 +27,6 @@ const AvailableAppointment = ({ selectedDate }) => {
   const [doctors, setDoctors] = useState([]);
   
   useEffect(() => {
-    // Fetch data when the component mounts
     const fetchData = async () => {
       try {
         const res = await fetch("http://localhost:5000/doctors");
@@ -46,17 +46,9 @@ const AvailableAppointment = ({ selectedDate }) => {
 
   return (
     <section className="my-16">
-      <p className="text-center text-secondary font-semibold">
-        You Have selected date : {format(selectedDate, "PP")}
-      </p>
+      
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {/* {appointments.map((appointment) => (
-          <AppointmentOption
-            key={appointment._id}
-            data={appointment}
-            setTreatment={setTreatment}
-          ></AppointmentOption>
-        ))} */}
+        
 
 
 
@@ -78,6 +70,15 @@ const AvailableAppointment = ({ selectedDate }) => {
             refetch={refetch}
           ></BookingModal>
         )}
+
+        {/* {treatment2 && (
+          <BookingModal2
+            treatment2={treatment2}
+            selectedDate={selectedDate}
+            setTreatment2={setTreatment2}
+            refetch={refetch}
+          ></BookingModal2>
+        )} */}
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import AppointmentOption from './AppointmentOption';
+import '../../../Pages/Appointment/Appointment/style.css';
 
 const Appointmentdoctor = () => {
 

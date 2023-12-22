@@ -1,8 +1,9 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, redirect, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import '../../Pages/Login/style.css';
 
 const Login = () => {
     // login section //
@@ -48,31 +49,31 @@ const Login = () => {
     }
     return (
         <div className='h-[600px] flex justify-center items-center'>
-            <div className='w-96 p-7'>
-                <h2 className='text-xl text-center'>Login</h2>
+            <div className='w-96 p-7 new'>
+                <h2 className='font-bold  text-center inputcolor ' style={{fontSize: 40 }}>LOGIN</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
-                    <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Email</span></label>
+                    <div className="form-control w-full max-w-xs ">
+                        <label className="label"> <span className="label-text inputcolor">Email</span></label>
                         <input type="text"
                             {...register("email", {
                                 required: "Email Address is required",
                             })}
-                            className="input input-bordered w-full max-w-xs" />
+                            className="input input-bordered w-full max-w-xs inputhover" placeholder="Your Gmail" />
                         {errors.email && <p className="text-red-700">{errors.email?.message}</p>}
 
                     </div>
                     <div className="form-control w-full max-w-xs">
-                        <label className="label"> <span className="label-text">Password</span></label>
+                        <label className="label"> <span className="label-text inputcolor " >Password</span></label>
                         <input type="password"
                             {...register("password", {
                                 required: "Password is required",
                                 minLength: { value: 6, message: 'Password must be 6 characters or longer' }
                             })}
-                            className="input input-bordered w-full max-w-xs" />
+                            className="input input-bordered w-full max-w-xs inputhover" placeholder="Your Password"/>
                         {errors.password && <p className="text-red-700">{errors.password?.message}</p>}
-                        <label className="label"> <span className='' label-text>Forget Password?</span></label>
+                        <label className="label"> <span className='inputcolor' label-text>Forget Password?</span></label>
                     </div>
-                    <input className='btn btn-accent w-full ' value="Login" type="submit" />
+                    <input className='btn btn-accent w-full btnback2' value="Login" type="submit" />
                     {/* //error message// */}
                     {
                         error &&
@@ -81,9 +82,11 @@ const Login = () => {
                         </p>
                     }
                 </form>
-                <p>New to Doctors Portal ? <Link to="/signup" className='text-secondary'>Create an Account</Link></p>
-                <div className="divider">OR</div>
-                <button onClick={handleGoggleSignIn} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <br></br>
+                <p>
+                <Link to="/signup" className='btn btn-accent w-full btnback3 '>Create an Account</Link></p>
+                
+                
             </div>
         </div>
     );

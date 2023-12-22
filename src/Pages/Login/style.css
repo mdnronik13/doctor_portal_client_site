@@ -1,0 +1,107 @@
+.inputcolor{
+  color:#036687;
+  display: 'flex';
+  justifyContent: 'center';
+  padding: 10px;
+}
+
+.bookDesign{
+  background:red;
+}
+.btnback3{
+  color:#036687;
+  background:White;
+  border-color:#036687;
+}
+.btnback2{
+  color:White;
+  background:#036687;
+}
+.btnback2:hover{
+  color:#036687;
+  background:White;
+  border-color:#036687;
+}
+.btnback3:hover{
+  color:White;
+  background:#036687;
+  border-color:#036687;
+}
+.inputhover:hover{
+  border-color:#036687;
+}
+
+.new{
+  background-color: #bad1d9;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 5px;
+  border-color:#036687;
+}
+.newmyapp{
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  border-style: solid;
+  border-width: 5px;
+  border-color:#036687;
+  padding: 10px;
+  color: #036687;
+}
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  color: #036687;
+}
+#customers thead tr th{
+  border: 1px solid #ffffff;
+}
+#customers thead tr th{
+  text-align: center;
+}
+#customers td, #customers th {
+  border: 1px solid #036687;
+  padding: 0px;
+}
+
+
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #036687;
+  color: white;
+}
+.btn-red{
+  background-color: #ff0000;
+  border-color: red;
+}
+.btn-red:hover{
+  background-color: white;
+  border-color: red;
+  color: red;
+}
+.btn-admin {
+  background-color: green;
+  border-color: green;
+  color: white;
+}
+.btn-admin:hover {
+  background-color: white;
+  border-color: green;
+  color: green;
+}
+
+.custom-select{
+  background-color: #036687;
+  color: white;
+}
+
+.center{
+  display: flex;
+  color: #036687;
+  justify-content: center;
+  align-items: center;
+}
